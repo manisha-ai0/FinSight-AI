@@ -1,7 +1,8 @@
 
-# 💳 FinTech Flow — Compliance & Transaction Explainer
+# FinSight AI — Financial Transaction Insights & Compliance Explainer
+**Financial Clarity. Intelligent Insights.**
 
-An AI-powered FinTech chatbot that explains digital payment workflows, UPI, transaction verification, settlement, and financial compliance concepts using a local language model and Retrieval-Augmented Generation (RAG).
+An AI-powered FinTech assistant that helps users understand digital payment workflows, UPI transactions, transaction verification, settlement processes, and financial compliance concepts through Retrieval-Augmented Generation (RAG) and a locally running language model.
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B?logo=streamlit)
