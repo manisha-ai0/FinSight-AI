@@ -1,0 +1,2298 @@
+============================================================
+FINTECH COMPLIANCE & DIGITAL PAYMENT KNOWLEDGE BASE
+============================================================
+
+Purpose:
+This knowledge base is designed for an educational FinTech
+Compliance & Transaction Flow Explainer Bot.
+
+Primary focus:
+- Digital payment workflows
+- UPI
+- Payment initiation
+- Verification
+- Authentication
+- Authorization
+- Settlement
+- Reconciliation
+- KYC
+- AML
+- CFT
+- Fraud prevention
+- Digital payment security
+- Dispute and grievance concepts
+- Roles of banks, PSPs, NPCI and customers
+
+Important limitation:
+This document is educational information. It is not legal advice,
+financial advice, investment advice, tax advice, or operational
+instructions for executing a financial transaction.
+
+Regulatory information can change. The bot should avoid presenting
+time-sensitive limits, circulars, fees, or regulatory requirements
+as permanent facts unless the relevant current source is available.
+
+============================================================
+1. DIGITAL PAYMENTS — BASIC CONCEPT
+============================================================
+
+A digital payment is a payment in which money is transferred
+electronically rather than through physical cash.
+
+Examples include:
+
+- UPI payments
+- Bank account transfers
+- Card payments
+- Internet banking payments
+- Mobile banking payments
+- Wallet or prepaid payment instrument transactions
+- Electronic bill payments
+- Certain digital recurring-payment mechanisms
+
+A digital payment normally involves multiple stages.
+
+A simplified lifecycle is:
+
+1. Payment initiation
+2. Identification of the payer and payee
+3. Transaction validation
+4. Authentication and authorization
+5. Transaction routing and processing
+6. Clearing
+7. Settlement
+8. Confirmation
+9. Reconciliation
+10. Exception or dispute handling when required
+
+Not every payment system implements these stages in exactly the
+same technical manner.
+
+============================================================
+2. UPI — UNIFIED PAYMENTS INTERFACE
+============================================================
+
+UPI is an electronic payment system that enables users to make
+bank-account-based payments using participating UPI applications
+and banking infrastructure.
+
+UPI can support payment experiences such as:
+
+- Person-to-person payments
+- Person-to-merchant payments
+- QR-based payments
+- UPI ID / Virtual Payment Address based payments
+- Pay requests
+- Collect requests
+- Intent-based payments
+- Other UPI-supported transaction mechanisms
+
+UPI is designed to enable convenient account-to-account payments
+without requiring users to manually enter full bank-account
+details for every transaction.
+
+A UPI ID is commonly represented in a form such as:
+
+name@bank-or-provider
+
+The exact format and availability depend on the participating
+provider and UPI ecosystem.
+
+============================================================
+3. MAIN PARTICIPANTS IN THE UPI ECOSYSTEM
+============================================================
+
+A UPI transaction involves multiple participants and systems.
+
+------------------------------------------------------------
+3.1 NPCI
+------------------------------------------------------------
+
+NPCI stands for National Payments Corporation of India.
+
+For UPI, NPCI functions as the network owner, network operator,
+service provider and coordinator of the UPI network.
+
+NPCI provides the infrastructure and ecosystem-level mechanisms
+needed for participating members to communicate and process UPI
+transactions.
+
+NPCI also performs clearing and settlement-related functions for
+UPI transactions between participating members according to the
+UPI settlement mechanism.
+
+The bot should distinguish between:
+
+- NPCI as the UPI network infrastructure/operator
+- Banks as account-holding and transaction-participating entities
+- PSPs as payment service providers
+- UPI applications as the user-facing interface
+
+------------------------------------------------------------
+3.2 Remitter Bank
+------------------------------------------------------------
+
+The remitter bank is the bank associated with the payer's account.
+
+During a UPI transaction, the payer's bank account may be debited
+for the transaction.
+
+The remitter bank also has responsibilities related to
+authentication and transaction processing.
+
+For example, the customer's UPI PIN is authenticated through the
+banking/payment infrastructure rather than by the chatbot or by
+the merchant.
+
+------------------------------------------------------------
+3.3 Beneficiary Bank
+------------------------------------------------------------
+
+The beneficiary bank is the bank associated with the recipient's
+account.
+
+When a successful transaction results in money being credited to
+the recipient, the beneficiary bank is involved in receiving and
+crediting the funds.
+
+------------------------------------------------------------
+3.4 Payer PSP
+------------------------------------------------------------
+
+A Payer PSP is a payment service provider function associated with
+the payer side.
+
+A Payer PSP can onboard customers into UPI services and provide
+the interface through which customers initiate or approve
+transactions.
+
+The payer-side experience may include:
+
+- Customer registration
+- UPI ID creation
+- Device binding
+- Transaction initiation
+- Authentication interaction
+- Transaction approval
+
+------------------------------------------------------------
+3.5 Payee PSP
+------------------------------------------------------------
+
+A Payee PSP is a payment service provider function associated
+with the beneficiary or receiving side.
+
+It can support onboarding of customers or merchants and receiving
+money through UPI.
+
+A Payee PSP may also support collect requests.
+
+------------------------------------------------------------
+3.6 Customer / Account Holder
+------------------------------------------------------------
+
+The customer is the person using the UPI-enabled bank account.
+
+A customer generally needs:
+
+- A UPI-enabled bank account
+- A supported UPI application
+- A registered mobile number as required by the ecosystem
+- Appropriate authentication credentials
+- A UPI ID or other supported payment identifier
+
+============================================================
+4. UPI PAYMENT IDENTIFIERS
+============================================================
+
+UPI supports several ways to identify the recipient depending on
+the transaction flow.
+
+Examples include:
+
+- UPI ID / Virtual Payment Address
+- QR code
+- Mobile number where supported
+- Bank account number and IFSC in supported flows
+- Other identifiers supported by the UPI ecosystem
+
+A UPI ID is intended to provide a convenient payment identifier
+without requiring the payer to manually provide complete banking
+information for every payment.
+
+============================================================
+5. BASIC UPI PAYMENT FLOW
+============================================================
+
+A simplified UPI payment can be understood as follows:
+
+STEP 1 — PAYMENT INITIATION
+
+The customer opens a UPI-enabled application and chooses to make
+a payment.
+
+The customer may:
+
+- Enter a UPI ID
+- Scan a QR code
+- Select a contact
+- Use an online merchant's UPI payment option
+- Use another supported payment method
+
+------------------------------------------------------------
+
+STEP 2 — PAYMENT DETAILS
+
+The payer specifies or confirms:
+
+- Recipient
+- Amount
+- Payment purpose or description when applicable
+- Other transaction information required by the application
+
+The user should verify the recipient and amount before approving
+the transaction.
+
+------------------------------------------------------------
+
+STEP 3 — TRANSACTION VALIDATION
+
+The payment system validates the transaction information.
+
+Examples of validation may include:
+
+- Whether the destination is valid
+- Whether required information is present
+- Whether the account/payment address can be resolved
+- Whether the transaction meets applicable rules
+- Whether technical systems are available
+
+A validation failure can result in a declined or failed
+transaction.
+
+------------------------------------------------------------
+
+STEP 4 — AUTHENTICATION
+
+The customer may be required to authenticate the transaction.
+
+For conventional UPI bank-account payments, the UPI PIN is an
+important transaction authentication mechanism.
+
+Authentication should be distinguished from authorization.
+
+Authentication asks:
+
+"Can the system verify the user or required transaction
+credential?"
+
+Authorization asks:
+
+"Should this transaction be permitted?"
+
+------------------------------------------------------------
+
+STEP 5 — AUTHORIZATION / PROCESSING
+
+Once the required checks and authentication succeed, the
+transaction can proceed through the relevant payment
+infrastructure.
+
+The transaction may pass through multiple participating entities
+before completion.
+
+------------------------------------------------------------
+
+STEP 6 — DEBIT AND CREDIT
+
+The payer-side account is debited and the beneficiary-side account
+is credited as applicable to the transaction.
+
+The actual movement and settlement of funds involves the
+participating banks and the payment system infrastructure.
+
+------------------------------------------------------------
+
+STEP 7 — SETTLEMENT
+
+Settlement is the process through which participating financial
+institutions settle their obligations arising from payment
+transactions.
+
+For UPI, NPCI performs clearing and settlement-related functions
+between participating members according to the applicable
+settlement mechanism.
+
+------------------------------------------------------------
+
+STEP 8 — CONFIRMATION
+
+The application and/or bank may provide a transaction status.
+
+Possible outcomes include:
+
+- Successful
+- Failed
+- Declined
+- Pending
+- Reversed
+- Other system-specific statuses
+
+The exact status terminology can vary.
+
+------------------------------------------------------------
+
+STEP 9 — RECONCILIATION
+
+Participating institutions reconcile transaction records.
+
+Reconciliation involves comparing transaction records between
+systems to identify:
+
+- Missing transactions
+- Duplicate transactions
+- Amount mismatches
+- Incorrect statuses
+- Failed transactions
+- Reversed transactions
+- Other exceptions
+
+============================================================
+6. PAYMENT INITIATION
+============================================================
+
+Payment initiation is the stage where the payer begins a payment.
+
+Examples:
+
+- Selecting "Pay"
+- Scanning a QR code
+- Entering a UPI ID
+- Selecting a recipient
+- Selecting UPI at an online checkout
+- Approving a collect request
+
+Payment initiation does NOT automatically mean the transaction
+has completed.
+
+A user pressing "Pay" is only the beginning of the transaction
+lifecycle.
+
+============================================================
+7. PAYMENT VALIDATION
+============================================================
+
+Validation checks whether a transaction request satisfies the
+technical and business requirements necessary for processing.
+
+Possible validation areas include:
+
+- Recipient identifier
+- Account status
+- Transaction format
+- Amount
+- Transaction limits
+- Authentication state
+- Availability of required systems
+- Applicable transaction rules
+- Risk and fraud controls
+
+Validation and authentication are different.
+
+Example:
+
+Validation:
+"Is the UPI ID in a usable format and can the transaction be
+processed?"
+
+Authentication:
+"Has the required user authentication succeeded?"
+
+============================================================
+8. AUTHENTICATION
+============================================================
+
+Authentication is the process of verifying an identity or
+credential.
+
+In digital payments, authentication helps establish that the
+person or device attempting the transaction satisfies the
+required authentication mechanism.
+
+Examples of authentication factors can include:
+
+- PIN
+- OTP
+- Device binding
+- Biometrics
+- Other approved authentication mechanisms
+
+The exact authentication method depends on the payment system,
+transaction type, applicable regulations and implementation.
+
+The RBI has emphasized authentication and security controls for
+digital payments, including additional factors of authentication
+and evolving authentication mechanisms.
+
+IMPORTANT:
+
+A chatbot must never ask a user to provide:
+
+- UPI PIN
+- ATM PIN
+- Internet banking password
+- OTP
+- Card CVV
+- Authentication credentials
+- Full sensitive banking credentials
+
+The chatbot must never store or process such credentials.
+
+============================================================
+9. AUTHORIZATION
+============================================================
+
+Authorization is the decision to permit or reject a transaction
+after required checks have been performed.
+
+Authorization may consider:
+
+- Successful authentication
+- Account status
+- Available funds
+- Transaction rules
+- Risk controls
+- Applicable limits
+- Fraud signals
+- System availability
+- Compliance requirements
+
+Authorization does not mean that the chatbot itself is
+authorizing a real transaction.
+
+The FinTech Explainer Bot is informational only.
+
+============================================================
+10. TRANSACTION PROCESSING
+============================================================
+
+Transaction processing refers to the technical and operational
+steps required to move a transaction through the payment
+infrastructure.
+
+Processing can involve:
+
+- Payment applications
+- PSP systems
+- Banks
+- NPCI infrastructure
+- Merchant systems
+- Payment gateways or other intermediaries depending on the
+  payment type
+
+The exact path depends on the payment system and transaction
+type.
+
+============================================================
+11. CLEARING
+============================================================
+
+Clearing is associated with determining the obligations arising
+between participating institutions from payment transactions.
+
+In a simplified model:
+
+Transactions occur
+        ↓
+Transaction information is collected
+        ↓
+Obligations are calculated
+        ↓
+Participants determine what they owe or are owed
+        ↓
+Settlement occurs
+
+Clearing and settlement are related but are not identical.
+
+============================================================
+12. SETTLEMENT
+============================================================
+
+Settlement is the process by which financial obligations between
+participating institutions are finally discharged.
+
+For UPI, NPCI acts as a clearing and settlement agency for
+inter-bank transactions between participating remitter and
+beneficiary members.
+
+The UPI settlement process includes calculation of net debit and
+credit positions for participating members.
+
+A simplified representation is:
+
+UPI transactions
+        ↓
+NPCI network processing
+        ↓
+Net obligations between members
+        ↓
+Settlement instructions
+        ↓
+Member settlement accounts
+        ↓
+Final settlement
+
+The settlement process is different from the user-facing payment
+confirmation.
+
+A customer may see a successful payment message while the
+underlying inter-bank settlement processes occur through the
+payment system infrastructure.
+
+============================================================
+13. RECONCILIATION
+============================================================
+
+Reconciliation means comparing records from different systems to
+ensure that they agree.
+
+For example:
+
+Bank transaction records
+        VS
+Payment network records
+
+If the records do not match, an exception may need to be
+investigated.
+
+Common reconciliation problems include:
+
+- Transaction appears in one system but not another
+- Duplicate transaction
+- Wrong amount
+- Wrong status
+- Missing credit
+- Missing debit
+- Delayed response
+- Reversal
+- Technical failure
+
+Reconciliation is important because payment systems consist of
+multiple interconnected systems.
+
+============================================================
+14. PAYMENT REQUEST TYPES
+============================================================
+
+UPI can support different transaction patterns.
+
+------------------------------------------------------------
+14.1 Pay / Push Transaction
+------------------------------------------------------------
+
+In a push-style payment, the payer actively initiates the
+transfer of funds to the beneficiary.
+
+Example:
+
+Customer selects a merchant
+        ↓
+Customer enters/scans payment details
+        ↓
+Customer enters amount
+        ↓
+Customer authenticates
+        ↓
+Payment is processed
+
+------------------------------------------------------------
+14.2 Collect / Pull Request
+------------------------------------------------------------
+
+In a collect request, a payment request is sent to a payer.
+
+The payer reviews the request and can approve or reject it.
+
+A collect request should not be interpreted as automatic
+permission to debit an account.
+
+The payer must follow the applicable authentication and approval
+process.
+
+------------------------------------------------------------
+14.3 Intent-Based Payment
+------------------------------------------------------------
+
+Intent-based UPI payments can allow a user to select a UPI
+application during online checkout.
+
+The merchant checkout provides payment information to the
+selected UPI application.
+
+The user then reviews and authenticates the transaction.
+
+============================================================
+15. QR PAYMENTS
+============================================================
+
+A QR code can encode payment-related information.
+
+In a typical QR payment:
+
+1. Customer opens a UPI application.
+2. Customer scans the merchant's QR code.
+3. Payment information is displayed.
+4. Customer checks the recipient and amount.
+5. Customer authenticates.
+6. Transaction is processed.
+7. Transaction status is returned.
+
+Security principle:
+
+Scanning a QR code does not itself guarantee that the transaction
+is safe.
+
+Users should verify:
+
+- Recipient name
+- Amount
+- Payment purpose
+- Transaction request
+
+A QR code can be used for both legitimate and fraudulent
+purposes, so the user should verify payment details before
+authorization.
+
+============================================================
+16. MERCHANT PAYMENTS
+============================================================
+
+A merchant payment involves a customer paying a business.
+
+Simplified flow:
+
+Customer
+   ↓
+Merchant checkout
+   ↓
+UPI payment option
+   ↓
+UPI application
+   ↓
+Customer authentication
+   ↓
+Payment network
+   ↓
+Banks
+   ↓
+Merchant receives transaction result
+
+Merchant systems may also perform their own order and payment
+status reconciliation.
+
+A payment confirmation should not automatically be treated as
+proof that a particular business order was fulfilled.
+
+Business systems should reconcile payment status with order
+records.
+
+============================================================
+17. UPI 24x7 AVAILABILITY
+============================================================
+
+NPCI's UPI FAQ describes UPI payments as available around the
+clock.
+
+However, availability of a specific transaction can still be
+affected by:
+
+- Bank downtime
+- Network problems
+- Application issues
+- System maintenance
+- Technical failures
+- Risk controls
+- Transaction restrictions
+
+Therefore:
+
+"UPI is designed for round-the-clock payments"
+
+does not mean:
+
+"Every transaction will always succeed."
+
+============================================================
+18. BUSINESS DECLINE VS TECHNICAL DECLINE
+============================================================
+
+A transaction can fail for different reasons.
+
+------------------------------------------------------------
+18.1 Business Decline
+------------------------------------------------------------
+
+A business decline is a decline caused by transaction/business
+conditions rather than a technical failure.
+
+Examples can include:
+
+- Invalid authentication/PIN
+- Incorrect beneficiary information
+- Exceeding an applicable transaction limit
+- Exceeding a permitted transaction count
+- Other business-rule conditions
+
+------------------------------------------------------------
+18.2 Technical Decline
+------------------------------------------------------------
+
+A technical decline occurs because of technical problems.
+
+Examples:
+
+- System unavailability
+- Network problems
+- Bank-side technical failure
+- Payment-system technical issues
+
+This distinction is useful when explaining why a payment failed.
+
+============================================================
+19. PAYMENT STATUS
+============================================================
+
+A payment system can produce different transaction states.
+
+Common conceptual states include:
+
+SUCCESSFUL
+The transaction has completed successfully according to the
+system's final status.
+
+FAILED
+The transaction could not be completed.
+
+DECLINED
+The transaction was rejected.
+
+PENDING
+The final status has not yet been established.
+
+REVERSED
+A previously processed transaction has been reversed according
+to the applicable transaction process.
+
+IMPORTANT:
+
+The exact meaning and handling of statuses depends on the
+payment system and specific transaction flow.
+
+The chatbot must not invent a status interpretation when the
+actual system status is unknown.
+
+============================================================
+20. KYC — KNOW YOUR CUSTOMER
+============================================================
+
+KYC means Know Your Customer.
+
+KYC is a regulatory framework and process used by regulated
+entities to identify and understand their customers.
+
+The RBI's KYC framework includes concepts such as:
+
+- Customer Acceptance Policy
+- Customer Identification Procedure
+- Customer Due Diligence
+- Beneficial ownership
+- Ongoing due diligence
+- Enhanced due diligence
+- Simplified due diligence where applicable
+- Risk management
+
+KYC helps regulated entities establish who their customers are
+and manage associated financial-crime risks.
+
+============================================================
+21. CUSTOMER IDENTIFICATION
+============================================================
+
+Customer identification involves establishing and verifying
+customer identity according to applicable requirements.
+
+Depending on the entity and applicable rules, this can involve:
+
+- Identity information
+- Address information
+- Officially valid documents
+- Customer due diligence
+- Verification procedures
+- Risk classification
+
+The exact requirements depend on the applicable RBI directions,
+laws and circumstances.
+
+The chatbot should not tell a user:
+
+"Submit this exact document and your account will definitely be
+approved."
+
+Instead it should explain that requirements depend on the
+regulated entity and applicable KYC rules.
+
+============================================================
+22. CUSTOMER DUE DILIGENCE — CDD
+============================================================
+
+Customer Due Diligence is the process through which a regulated
+entity obtains and evaluates relevant customer information.
+
+CDD can include:
+
+- Identifying the customer
+- Verifying identity
+- Understanding the nature and purpose of the relationship
+- Understanding risk
+- Identifying beneficial owners where applicable
+- Monitoring transactions as required
+
+CDD is broader than simply collecting an identity document.
+
+============================================================
+23. ONGOING DUE DILIGENCE
+============================================================
+
+Customer due diligence does not necessarily end when an account
+is opened.
+
+Regulated entities may need ongoing monitoring to ensure that
+customer activity is consistent with the institution's
+understanding of the customer and applicable risk requirements.
+
+This can involve:
+
+- Transaction monitoring
+- Updating customer information
+- Reviewing risk
+- Investigating unusual activity
+- Applying enhanced due diligence where appropriate
+
+============================================================
+24. BENEFICIAL OWNER
+============================================================
+
+A beneficial owner is the natural person who ultimately owns or
+controls a legal entity or arrangement according to applicable
+rules.
+
+Identifying beneficial ownership is important because criminals
+may attempt to hide the actual person controlling or benefiting
+from financial activity behind companies or other structures.
+
+The exact definition and thresholds are governed by applicable
+laws and regulations.
+
+============================================================
+25. AML — ANTI-MONEY LAUNDERING
+============================================================
+
+Money laundering is the process of disguising proceeds from
+illegal activities so that they appear legitimate.
+
+AML refers to measures used to prevent, detect and respond to
+money-laundering risks.
+
+Common AML concepts include:
+
+- Customer identification
+- Customer due diligence
+- Transaction monitoring
+- Risk assessment
+- Suspicious activity identification
+- Record keeping
+- Reporting obligations
+- Internal controls
+
+The chatbot should explain AML conceptually rather than provide
+instructions for avoiding AML controls.
+
+============================================================
+26. CFT — COUNTERING FINANCING OF TERRORISM
+============================================================
+
+CFT refers to measures designed to prevent and detect financing
+of terrorism.
+
+AML and CFT are related financial-crime control frameworks.
+
+They can involve:
+
+- Customer due diligence
+- Risk-based monitoring
+- Screening
+- Transaction monitoring
+- Reporting
+- Record keeping
+- Controls against prohibited activity
+
+The exact requirements depend on applicable law and regulation.
+
+============================================================
+27. SANCTIONS AND SCREENING
+============================================================
+
+Financial institutions and relevant regulated entities may have
+screening and control obligations relating to prohibited persons,
+entities or transactions.
+
+Screening can be part of financial-crime compliance.
+
+A screening alert does not automatically mean that a person has
+committed a crime.
+
+An alert can require investigation or review.
+
+The chatbot must avoid making accusations about real people or
+organizations based only on hypothetical screening results.
+
+============================================================
+28. TRANSACTION MONITORING
+============================================================
+
+Transaction monitoring involves observing transactions for
+patterns or activity that may require review.
+
+Examples of potentially unusual patterns can include:
+
+- Activity inconsistent with a customer's expected profile
+- Unusual transaction patterns
+- Rapid movement of funds
+- Repeated unusual transactions
+- Structuring or suspicious transaction patterns
+- Activity associated with known fraud indicators
+
+Important:
+
+An unusual transaction is not automatically illegal.
+
+A monitoring alert generally indicates that additional review
+may be necessary.
+
+============================================================
+29. RISK-BASED APPROACH
+============================================================
+
+Financial-crime compliance commonly uses a risk-based approach.
+
+A risk-based approach means controls can be designed according to
+the level and type of risk rather than treating every situation
+as identical.
+
+Possible risk factors can include:
+
+- Customer type
+- Product
+- Geography
+- Transaction pattern
+- Delivery channel
+- Business relationship
+- Other relevant factors
+
+Higher-risk situations can require stronger controls.
+
+============================================================
+30. DIGITAL PAYMENT SECURITY
+============================================================
+
+Digital payment security involves protecting:
+
+- Customer accounts
+- Payment applications
+- Authentication credentials
+- Transaction data
+- Payment infrastructure
+- Communication channels
+- Backend systems
+- APIs
+- Databases
+- Devices
+
+RBI has issued digital-payment security controls for regulated
+entities and separate cyber-resilience and digital-payment
+security directions for non-bank payment system operators.
+
+Security controls can cover areas such as:
+
+- Governance
+- Risk management
+- Application security
+- Authentication
+- Fraud risk management
+- Reconciliation
+- Customer awareness
+- Grievance redressal
+- Incident management
+
+============================================================
+31. DEVICE SECURITY
+============================================================
+
+The user's device is part of the security chain.
+
+Potential risks include:
+
+- Malware
+- Malicious applications
+- Screen overlays
+- Remote-access tools
+- SIM-related attacks
+- Phishing
+- Social engineering
+- Stolen credentials
+
+Users should avoid installing untrusted applications or sharing
+authentication information.
+
+The chatbot should never ask users to disable security controls.
+
+============================================================
+32. PHISHING
+============================================================
+
+Phishing is a social-engineering technique in which an attacker
+attempts to trick a user into revealing information or performing
+an action.
+
+Examples include:
+
+- Fake payment links
+- Fake customer-support messages
+- Fake KYC messages
+- Fake refunds
+- Fake prize notifications
+- Fake banking pages
+
+A legitimate payment explanation bot should never request a
+user's:
+
+- UPI PIN
+- OTP
+- Password
+- CVV
+- ATM PIN
+
+============================================================
+33. QR CODE FRAUD
+============================================================
+
+Fraudsters can use QR codes as part of social-engineering
+attacks.
+
+Important principle:
+
+A QR code can be used to initiate a payment.
+
+Scanning a QR code does not inherently mean that money will be
+received.
+
+Before authenticating, a user should verify the transaction
+details displayed by the payment application.
+
+============================================================
+34. SOCIAL ENGINEERING
+============================================================
+
+Social engineering manipulates people rather than directly
+attacking technical systems.
+
+Examples:
+
+- Impersonating bank employees
+- Impersonating customer support
+- Fake KYC requests
+- Fake refund requests
+- Fake police/government messages
+- Fake investment opportunities
+- Urgent requests for OTPs or PINs
+
+A security-aware payment system should combine technical
+controls with customer awareness.
+
+============================================================
+35. FRAUD PREVENTION
+============================================================
+
+Fraud prevention can involve multiple layers.
+
+Possible layers include:
+
+1. Customer authentication
+2. Device security
+3. Transaction monitoring
+4. Risk scoring
+5. Velocity checks
+6. Account controls
+7. Fraud detection
+8. Customer alerts
+9. Transaction limits
+10. Incident response
+11. Dispute management
+
+No single control can eliminate all fraud.
+
+============================================================
+36. FRAUD VS PAYMENT FAILURE
+============================================================
+
+A failed payment is not automatically fraud.
+
+Examples:
+
+Technical failure:
+The bank or payment network is temporarily unavailable.
+
+Business decline:
+A transaction violates an applicable transaction condition.
+
+Fraud:
+A transaction may have been initiated through unauthorized or
+deceptive activity.
+
+These are different concepts.
+
+============================================================
+37. DISPUTE MANAGEMENT
+============================================================
+
+A payment dispute occurs when a customer, merchant or financial
+institution questions a transaction or its outcome.
+
+Examples:
+
+- Payment debited but recipient not credited
+- Incorrect transaction
+- Duplicate transaction
+- Unauthorized transaction
+- Merchant dispute
+- Failed transaction with unexpected account status
+
+A dispute generally requires examination of transaction records
+and applicable rules.
+
+The chatbot should explain the conceptual process rather than
+claiming to resolve a real dispute.
+
+============================================================
+38. GRIEVANCE REDRESSAL
+============================================================
+
+Customers can have complaints regarding digital-payment services.
+
+A typical escalation concept is:
+
+1. Contact the relevant payment service provider or bank.
+2. Provide transaction/reference information.
+3. Allow the entity to investigate.
+4. Escalate through the applicable grievance mechanism if the
+   issue is not resolved.
+
+The Reserve Bank's Integrated Ombudsman framework provides a
+grievance-redress mechanism for covered regulated entities.
+
+The Reserve Bank - Integrated Ombudsman Scheme, 2026 came into
+force on July 1, 2026 and replaced the 2021 scheme.
+
+The bot should not guarantee that a complaint will be accepted or
+that compensation will be awarded.
+
+============================================================
+39. TRANSACTION RECONCILIATION
+============================================================
+
+Reconciliation is essential because a digital payment can involve
+multiple systems.
+
+Example:
+
+Customer application
+        ↓
+PSP system
+        ↓
+NPCI/payment network
+        ↓
+Remitter bank
+        ↓
+Beneficiary bank
+        ↓
+Merchant system
+
+Each system can maintain records.
+
+Reconciliation checks whether those records agree.
+
+============================================================
+40. EXCEPTIONS
+============================================================
+
+An exception is a transaction condition that requires special
+handling.
+
+Examples:
+
+- Timeout
+- Duplicate request
+- Delayed response
+- Missing transaction
+- Amount mismatch
+- Incorrect status
+- Failed credit
+- Failed debit
+- Reversal
+- Dispute
+
+Exception handling can involve:
+
+- Investigation
+- Reconciliation
+- Status verification
+- Adjustment
+- Reversal
+- Customer communication
+- Escalation
+
+The exact procedure depends on the payment system and rules.
+
+============================================================
+41. TRANSACTION TIMEOUT
+============================================================
+
+A timeout occurs when a system does not receive a required
+response within the expected period.
+
+A timeout does not automatically mean that the transaction failed.
+
+The system may need to determine the final transaction status
+before deciding the appropriate next step.
+
+This is why users should avoid immediately repeating a payment
+without checking the transaction status.
+
+Repeated payment attempts can potentially result in duplicate
+transactions when the original transaction was actually
+successful but its response was delayed.
+
+============================================================
+42. REVERSAL
+============================================================
+
+A reversal is a transaction adjustment that returns or corrects
+funds after a transaction outcome requires reversal.
+
+A reversal is different from a new independent payment.
+
+The exact reversal process depends on:
+
+- Payment system
+- Transaction state
+- Bank processing
+- Applicable rules
+- Reason for reversal
+
+============================================================
+43. PAYMENT CONFIRMATION
+============================================================
+
+A payment confirmation is a status indication from a payment
+system.
+
+A screenshot or message saying "payment successful" should not be
+treated as an independent source of truth for every business
+process.
+
+Merchants should reconcile payment status with their own
+transaction records.
+
+Customers should preserve transaction/reference information when
+raising disputes.
+
+============================================================
+44. DATA PROTECTION AND PRIVACY
+============================================================
+
+Digital payment systems process sensitive information.
+
+Examples can include:
+
+- Account identifiers
+- Transaction information
+- Device information
+- Authentication information
+- Customer identity information
+- Contact information
+
+A secure payment architecture should minimize unnecessary access
+to sensitive information.
+
+The FinTech Explainer Bot itself must not request or store
+sensitive payment credentials.
+
+============================================================
+45. PRINCIPLE OF LEAST PRIVILEGE
+============================================================
+
+Least privilege means a system or user should receive only the
+access necessary to perform its required function.
+
+For a payment application this can mean:
+
+- Limited API permissions
+- Limited database access
+- Separation of duties
+- Restricted administrative access
+- Strong authentication
+- Logging and monitoring
+
+A chatbot should operate with no access to real banking accounts
+or transaction execution systems.
+
+============================================================
+46. API SECURITY
+============================================================
+
+APIs allow software systems to communicate.
+
+Payment APIs should be protected against:
+
+- Unauthorized access
+- Credential theft
+- Replay attacks
+- Injection
+- Abuse
+- Excessive requests
+- Data leakage
+
+Important API security concepts include:
+
+- Authentication
+- Authorization
+- Encryption
+- Rate limiting
+- Input validation
+- Logging
+- Monitoring
+- Secret management
+
+API keys should never be hard-coded into public source code.
+
+============================================================
+47. SECRET MANAGEMENT
+============================================================
+
+API keys, passwords and other secrets must not be placed directly
+inside source code.
+
+Bad practice:
+
+api_key = "actual-secret-key"
+
+Better practice:
+
+Load secrets through environment variables or an appropriate
+secret-management system.
+
+Example:
+
+GEMINI_API_KEY=...
+
+The .env file should normally be excluded from Git using:
+
+.env
+
+The FinTech bot should not expose secrets through its UI.
+
+============================================================
+48. AUDIT LOGGING
+============================================================
+
+Audit logs help organizations understand what happened in a
+system.
+
+Useful information can include:
+
+- Event timestamp
+- System component
+- Transaction/reference ID
+- Event type
+- Status
+- Error category
+- Administrative action
+
+Logs should avoid exposing unnecessary sensitive information.
+
+============================================================
+49. TRANSACTION REFERENCE ID
+============================================================
+
+A transaction reference ID is an identifier associated with a
+transaction.
+
+Reference IDs help systems and support teams:
+
+- Find transactions
+- Investigate failures
+- Reconcile records
+- Handle disputes
+- Trace transaction states
+
+The exact identifier format depends on the payment system.
+
+============================================================
+50. PAYMENT GATEWAY VS PAYMENT NETWORK
+============================================================
+
+These concepts should not be confused.
+
+Payment gateway:
+A technology/service layer that can facilitate payment
+communication between a merchant and payment ecosystem.
+
+Payment network:
+Infrastructure and rules through which payment transactions are
+routed and processed.
+
+UPI is a payment system/network infrastructure, not simply a
+merchant website payment button.
+
+============================================================
+51. PSP VS BANK
+============================================================
+
+A PSP provides payment-service functionality.
+
+A bank can participate in UPI in multiple roles, including
+holding customer accounts and performing remitter or beneficiary
+functions.
+
+The same organization may participate in different capacities
+depending on the applicable UPI arrangement.
+
+============================================================
+52. NPCI VS RBI
+============================================================
+
+RBI and NPCI have different roles.
+
+RBI:
+- Central bank of India
+- Regulator/overseer for relevant payment systems and regulated
+  entities
+- Issues regulatory directions in applicable areas
+- Oversees payment-system and banking-related frameworks
+
+NPCI:
+- Operates/co-ordinates UPI infrastructure and related payment
+  systems
+- Provides network-level services
+- Coordinates participating members
+- Performs applicable clearing and settlement functions
+
+A chatbot should never describe NPCI as if it were the same thing
+as RBI.
+
+============================================================
+53. COMPLIANCE CHECKS
+============================================================
+
+"Compliance checks" is a broad term.
+
+Depending on the context, compliance checks can involve:
+
+- KYC requirements
+- Customer due diligence
+- AML controls
+- CFT controls
+- Sanctions screening
+- Transaction monitoring
+- Risk management
+- Regulatory reporting
+- Record keeping
+- Security controls
+- Internal policies
+- Applicable transaction rules
+
+Not every transaction necessarily triggers every possible
+compliance check.
+
+Controls depend on:
+
+- Customer
+- Institution
+- Product
+- Transaction
+- Risk level
+- Applicable law
+- Applicable regulatory directions
+
+============================================================
+54. COMPLIANCE CHECK VS FRAUD CHECK
+============================================================
+
+Compliance and fraud controls overlap but are not identical.
+
+Compliance checks:
+Focus on regulatory and legal obligations.
+
+Fraud checks:
+Focus on detecting and preventing fraudulent or unauthorized
+activity.
+
+Example:
+
+A transaction may be legitimate but require compliance review.
+
+Another transaction may violate fraud-risk rules without being a
+traditional AML issue.
+
+A payment system can use multiple control layers simultaneously.
+
+============================================================
+55. COMPLIANCE CHECK VS AUTHENTICATION
+============================================================
+
+Authentication:
+"Is the required identity/credential verified?"
+
+Compliance:
+"Does the activity satisfy applicable regulatory and institutional
+requirements?"
+
+Fraud detection:
+"Does the activity appear suspicious, unauthorized or risky?"
+
+These are different concepts.
+
+============================================================
+56. TRANSACTION RISK
+============================================================
+
+Transaction risk can be influenced by factors such as:
+
+- Amount
+- Frequency
+- Customer behavior
+- Device behavior
+- Location-related signals
+- Beneficiary characteristics
+- Historical patterns
+- Known fraud indicators
+- Applicable regulatory requirements
+
+A risk engine may combine multiple signals.
+
+The exact scoring methodology is normally proprietary to the
+financial institution or payment provider.
+
+============================================================
+57. MACHINE LEARNING IN FRAUD DETECTION
+============================================================
+
+Financial institutions may use automated systems and machine
+learning to identify potentially suspicious transactions.
+
+Possible input features can include:
+
+- Transaction amount
+- Transaction frequency
+- Time patterns
+- Device information
+- Historical behavior
+- Beneficiary patterns
+- Network relationships
+- Previous fraud indicators
+
+A model can produce a risk score.
+
+Example:
+
+Transaction
+    ↓
+Feature extraction
+    ↓
+Risk model
+    ↓
+Risk score
+    ↓
+Low-risk / Review / Block
+    ↓
+Additional action
+
+The exact thresholds and decisions depend on the institution.
+
+Machine-learning predictions should not automatically be treated
+as proof of fraud.
+
+============================================================
+58. FALSE POSITIVE
+============================================================
+
+A false positive occurs when a legitimate activity is incorrectly
+identified as suspicious or risky.
+
+Example:
+
+A customer makes an unusually large but legitimate payment and a
+fraud system flags it for review.
+
+False positives are important because excessive blocking can
+harm legitimate customers.
+
+============================================================
+59. FALSE NEGATIVE
+============================================================
+
+A false negative occurs when suspicious or fraudulent activity is
+not detected.
+
+Fraud systems must therefore balance:
+
+- Detection
+- Customer experience
+- False positives
+- False negatives
+- Operational cost
+- Regulatory requirements
+
+============================================================
+60. TRANSACTION LIMITS
+============================================================
+
+Payment systems can impose transaction limits.
+
+Limits can depend on:
+
+- Payment type
+- Account type
+- Bank
+- Product
+- Risk controls
+- Regulatory requirements
+- Applicable NPCI rules
+- Merchant category
+- Customer configuration
+
+IMPORTANT:
+
+The bot should NOT hard-code a supposedly permanent UPI limit
+unless the source and date are known.
+
+Limits can change.
+
+If a user asks:
+
+"What is the current UPI limit?"
+
+the ideal system should retrieve the latest authoritative
+information rather than rely on an old static answer.
+
+============================================================
+61. PAYMENT FAILURE — COMMON CATEGORIES
+============================================================
+
+Possible failure categories include:
+
+1. Invalid credentials
+2. Incorrect payment information
+3. Insufficient funds
+4. Transaction limit exceeded
+5. Bank system unavailable
+6. Network issue
+7. Beneficiary issue
+8. Risk/fraud control
+9. Compliance-related restriction
+10. Timeout
+11. Technical error
+12. Other business-rule rejection
+
+The exact reason should be obtained from the relevant payment
+system rather than guessed.
+
+============================================================
+62. USER SAFETY PRINCIPLES
+============================================================
+
+The bot should encourage users to:
+
+- Verify recipient information
+- Verify payment amount
+- Never share UPI PIN
+- Never share OTP
+- Never share banking passwords
+- Avoid unknown payment links
+- Avoid installing suspicious applications
+- Verify customer-support contacts
+- Review transaction notifications
+- Report suspected unauthorized transactions promptly
+- Use official bank/payment-provider channels
+
+============================================================
+63. WHAT THE FINTECH EXPLAINER BOT CAN DO
+============================================================
+
+The bot CAN:
+
+- Explain digital payment concepts
+- Explain UPI architecture
+- Explain payment flows
+- Explain transaction stages
+- Explain authentication
+- Explain authorization
+- Explain settlement
+- Explain reconciliation
+- Explain KYC
+- Explain AML
+- Explain CFT
+- Explain digital payment security
+- Explain fraud concepts
+- Explain dispute concepts
+- Explain terminology
+- Compare conceptual payment stages
+- Explain hypothetical transaction scenarios
+
+============================================================
+64. WHAT THE FINTECH EXPLAINER BOT MUST NOT DO
+============================================================
+
+The bot MUST NOT:
+
+- Execute payments
+- Transfer money
+- Access bank accounts
+- Check account balances
+- Retrieve private transaction records
+- Ask for UPI PIN
+- Ask for OTP
+- Ask for passwords
+- Ask for CVV
+- Store payment credentials
+- Provide investment advice
+- Provide personalized financial advice
+- Provide personalized tax advice
+- Provide personalized legal advice
+- Pretend to be a bank
+- Pretend to be NPCI
+- Pretend to be RBI
+- Claim to have access to a user's bank account
+- Claim to have completed a real transaction
+- Claim that a transaction is successful without an authoritative
+  transaction status
+- Provide instructions for bypassing KYC, AML, fraud controls or
+  sanctions
+
+============================================================
+65. EXAMPLE — EXPLAINING A SIMPLE UPI PAYMENT
+============================================================
+
+Question:
+
+"Explain a simple UPI payment."
+
+Recommended conceptual answer:
+
+1. The payer chooses a recipient and starts a payment.
+2. The payment details are entered or obtained through a QR code,
+   UPI ID or another supported mechanism.
+3. The payment application displays the transaction details.
+4. The payer verifies the recipient and amount.
+5. The payer completes the required authentication.
+6. The transaction is processed through the UPI ecosystem.
+7. The payer's account is debited and the beneficiary's account is
+   credited when the transaction completes successfully.
+8. The payment system provides a transaction status.
+9. Participating institutions perform applicable clearing,
+   settlement and reconciliation processes.
+
+============================================================
+66. EXAMPLE — EXPLAINING AUTHENTICATION
+============================================================
+
+Question:
+
+"What is authentication?"
+
+Answer concept:
+
+Authentication is the process of verifying that the required user
+or credential satisfies the authentication mechanism.
+
+In a UPI context, the UPI PIN is an important authentication
+mechanism for applicable transactions.
+
+The PIN should remain secret.
+
+The FinTech bot should explain authentication but never request
+the user's actual authentication credentials.
+
+============================================================
+67. EXAMPLE — EXPLAINING SETTLEMENT
+============================================================
+
+Question:
+
+"What is settlement?"
+
+Answer concept:
+
+Settlement is the process through which participating financial
+institutions discharge the financial obligations created by
+payment transactions.
+
+For UPI, NPCI performs applicable clearing and settlement
+functions between participating members.
+
+A customer-facing payment confirmation and inter-bank settlement
+are related but technically distinct concepts.
+
+============================================================
+68. EXAMPLE — EXPLAINING KYC
+============================================================
+
+Question:
+
+"What is KYC?"
+
+Answer concept:
+
+KYC means Know Your Customer.
+
+It is a framework used by regulated entities to identify and
+understand customers and manage financial-crime and other
+regulatory risks.
+
+KYC-related processes can include customer identification,
+customer due diligence, beneficial-owner identification and
+ongoing due diligence as applicable.
+
+============================================================
+69. EXAMPLE — EXPLAINING AML
+============================================================
+
+Question:
+
+"What is AML?"
+
+Answer concept:
+
+AML means Anti-Money Laundering.
+
+AML controls are designed to help prevent and detect the use of
+financial systems for money laundering and related financial
+crime.
+
+AML controls can include:
+
+- Customer due diligence
+- Transaction monitoring
+- Risk assessment
+- Record keeping
+- Investigation
+- Reporting obligations
+
+============================================================
+70. EXAMPLE — EXPLAINING A FAILED PAYMENT
+============================================================
+
+Question:
+
+"Why did my UPI payment fail?"
+
+The bot should NOT guess the exact reason.
+
+It should explain possible categories:
+
+- Technical failure
+- Network issue
+- Bank availability issue
+- Invalid transaction information
+- Authentication failure
+- Transaction limit
+- Risk controls
+- Insufficient funds
+- Beneficiary-related issue
+- Other bank or payment-system rules
+
+The bot should advise the user to check the transaction status
+and contact the relevant bank/payment provider for the actual
+reason.
+
+============================================================
+71. EXAMPLE — PAYMENT DEBITED BUT RECIPIENT NOT CREDITED
+============================================================
+
+Question:
+
+"Money was debited but the receiver didn't get it. What happened?"
+
+The bot should explain:
+
+This can occur when the transaction status between different
+systems is delayed or when an exception occurs.
+
+Possible stages include:
+
+Payer account
+    ↓
+Payment network
+    ↓
+Beneficiary bank
+    ↓
+Recipient account
+
+If the final state is not immediately available, the transaction
+may require status confirmation, reconciliation or reversal
+according to the applicable process.
+
+The bot should NOT claim that the money is definitely lost or
+definitely refunded without transaction-specific evidence.
+
+============================================================
+72. EXAMPLE — USER ASKS FOR FINANCIAL ADVICE
+============================================================
+
+Question:
+
+"Should I invest my money in this stock?"
+
+Correct response:
+
+"I am an informational bot designed only to explain FinTech
+payment workflows and compliance processes. I cannot provide
+financial or investment advice."
+
+============================================================
+73. EXAMPLE — USER ASKS TO TRANSFER MONEY
+============================================================
+
+Question:
+
+"Send ₹5,000 to this UPI ID."
+
+Correct response:
+
+"I am an informational bot designed only to explain FinTech
+payment workflows and compliance processes. I cannot process
+transactions or provide financial advice."
+
+============================================================
+74. EXAMPLE — USER PROVIDES A UPI PIN
+============================================================
+
+If a user provides a UPI PIN, OTP, password or similar secret:
+
+The bot should NOT repeat or process the credential.
+
+The bot should advise:
+
+"Do not share your UPI PIN, OTP or banking password with anyone,
+including an AI assistant."
+
+============================================================
+75. EXAMPLE — USER ASKS HOW TO BYPASS KYC
+============================================================
+
+Question:
+
+"How can I bypass KYC?"
+
+Correct behavior:
+
+Refuse to provide instructions for bypassing regulatory controls.
+
+Instead explain:
+
+"KYC is part of the customer-identification and due-diligence
+framework used by regulated entities. I can explain how KYC works,
+but I cannot provide instructions for bypassing or evading it."
+
+============================================================
+76. SOURCE PRIORITY
+============================================================
+
+When authoritative information is available, the bot should
+prefer:
+
+1. Reserve Bank of India
+2. NPCI
+3. Government of India / official statutory sources
+4. Official regulated financial institution documentation
+5. Other authoritative technical or regulatory sources
+
+Random blogs, social media posts and forums should not be treated
+as authoritative regulatory sources.
+
+============================================================
+77. SOURCE DATE AWARENESS
+============================================================
+
+Financial regulations and payment-system rules can change.
+
+The bot should distinguish between:
+
+- Stable conceptual knowledge
+- Current regulatory requirements
+- Historical rules
+- Current transaction limits
+- Current product features
+- Temporary operational conditions
+
+For questions involving "today", "current", "latest", "current
+limit", "new rule", or similar wording, a current authoritative
+source should be consulted when available.
+
+============================================================
+78. IMPORTANT DISTINCTIONS
+============================================================
+
+The bot should maintain these distinctions:
+
+Authentication
+=
+Verifying the required identity or credential.
+
+Authorization
+=
+Allowing or rejecting a transaction.
+
+Validation
+=
+Checking whether transaction information satisfies required
+conditions.
+
+Processing
+=
+Technical handling of the transaction.
+
+Clearing
+=
+Determining obligations between participating institutions.
+
+Settlement
+=
+Discharging financial obligations between participating
+institutions.
+
+Reconciliation
+=
+Comparing records to identify mismatches or exceptions.
+
+Compliance
+=
+Meeting applicable legal, regulatory and institutional
+requirements.
+
+Fraud detection
+=
+Identifying potentially fraudulent or unauthorized activity.
+
+============================================================
+79. SIMPLIFIED END-TO-END ARCHITECTURE
+============================================================
+
+A simplified digital-payment architecture can be represented as:
+
+CUSTOMER
+   |
+   v
+UPI APPLICATION
+   |
+   v
+PAYER PSP / BANK
+   |
+   v
+UPI NETWORK / NPCI
+   |
+   +----------------------+
+   |                      |
+   v                      v
+REMITTER BANK        BENEFICIARY BANK
+   |                      |
+   v                      v
+PAYER ACCOUNT        BENEFICIARY ACCOUNT
+   |
+   v
+SETTLEMENT / RECONCILIATION
+
+The exact technical architecture varies by transaction type and
+implementation.
+
+============================================================
+80. COMPLIANCE ARCHITECTURE
+============================================================
+
+A simplified compliance architecture can be represented as:
+
+CUSTOMER
+   |
+   v
+CUSTOMER IDENTIFICATION
+   |
+   v
+KYC / CDD
+   |
+   v
+RISK ASSESSMENT
+   |
+   v
+TRANSACTION MONITORING
+   |
+   +----------------------+
+   |                      |
+   v                      v
+NORMAL ACTIVITY       ALERT / REVIEW
+                          |
+                          v
+                   INVESTIGATION
+                          |
+                          v
+              APPLICABLE REPORTING /
+                    ACTION
+
+This is a conceptual model and not a description of every
+regulated entity's exact internal process.
+
+============================================================
+81. SECURITY ARCHITECTURE
+============================================================
+
+A simplified security architecture can be:
+
+USER
+  |
+  v
+DEVICE SECURITY
+  |
+  v
+APPLICATION SECURITY
+  |
+  v
+AUTHENTICATION
+  |
+  v
+TRANSACTION VALIDATION
+  |
+  v
+FRAUD / RISK CONTROLS
+  |
+  v
+PAYMENT NETWORK
+  |
+  v
+BANK SYSTEMS
+  |
+  v
+MONITORING / LOGGING / RECONCILIATION
+
+Security should be layered.
+
+============================================================
+82. RAG BOT RESPONSE POLICY
+============================================================
+
+When the FinTech bot uses this knowledge base:
+
+1. Prefer retrieved knowledge over unsupported model memory.
+2. Do not invent regulatory rules.
+3. Do not invent transaction limits.
+4. Do not invent bank policies.
+5. Do not claim access to private banking data.
+6. Do not claim to execute transactions.
+7. Do not provide financial advice.
+8. Do not request secrets.
+9. Explain uncertainty when the source does not contain the answer.
+10. For current regulatory questions, recommend checking the latest
+    RBI/NPCI source.
+11. Distinguish conceptual explanations from legal requirements.
+12. If retrieved information conflicts with current official
+    information, prefer the newer authoritative source.
+
+============================================================
+83. RESPONSE STYLE
+============================================================
+
+The bot should explain complex financial technology concepts in
+clear language.
+
+Preferred structure:
+
+Short definition
+        ↓
+Step-by-step explanation
+        ↓
+Example
+        ↓
+Important security/compliance note
+        ↓
+Source/context note when appropriate
+
+Example:
+
+"What is settlement?"
+
+Definition:
+Settlement is the process through which participating institutions
+discharge obligations created by payment transactions.
+
+Simple example:
+If many customers pay users of different banks, the payment
+network determines the participating institutions' obligations and
+the settlement process handles those obligations.
+
+Important distinction:
+Customer-facing payment confirmation and inter-bank settlement
+are related but not identical stages.
+
+============================================================
+84. KNOWLEDGE BASE LIMITATIONS
+============================================================
+
+This knowledge base is designed for educational explanation.
+
+It does not contain:
+
+- Customer bank records
+- Real-time transaction data
+- User account balances
+- Private financial information
+- Bank authentication credentials
+- Proprietary fraud models
+- Internal bank risk scores
+- Confidential NPCI systems
+- Confidential RBI systems
+
+The chatbot cannot determine the outcome of an actual transaction
+without access to the relevant authorized system.
+
+============================================================
+85. FINAL SAFETY RULE
+============================================================
+
+The FinTech Flow & Compliance Explainer Bot is an educational
+system.
+
+It explains how digital payment systems and compliance concepts
+work.
+
+It does not:
+
+- move money,
+- authorize payments,
+- access accounts,
+- retrieve private financial data,
+- make investment decisions,
+- bypass regulatory controls,
+- or replace a bank, payment provider, regulator, lawyer or
+  financial professional.
+
+============================================================
+END OF KNOWLEDGE BASE
+============================================================
