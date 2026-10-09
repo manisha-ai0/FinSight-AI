@@ -241,9 +241,13 @@ FinTech Flow is an educational prototype.
 
 GitHub: [@manisha-ai0](https://github.com/manisha-ai0)
 
+
 ## 📄 License
 
-No license has been specified yet. Reuse and redistribution permissions should be defined before the project is shared as an open-source project.
+This project is licensed under the [MIT License](LICENSE).
+
+See the [LICENSE](LICENSE) file for the full license terms.
+
 
 ---
 
